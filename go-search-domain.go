@@ -17,7 +17,7 @@ func main() {
 	app := cli.NewApp()
 	app.Version = version.Version()
 	app.Name = "go-search-domain"
-	app.Usage = "go-search-domain DOMAIN"
+	app.Usage = "go-search-domain --domain=www.golang.com"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "domain",
@@ -27,6 +27,7 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) {
+
 		err := validateArgs(c)
 
 		if err != nil {
@@ -51,6 +52,7 @@ func main() {
 }
 
 func validateArgs(c *cli.Context) error {
+	fmt.Println(c.Args())
 	if len(c.Args()) != 1 {
 		return fmt.Errorf("domain value is required")
 	}

@@ -29,18 +29,18 @@ func main() {
 	app.Action = func(c *cli.Context) {
 		domain := c.String("domain")
 		fmt.Println(domain)
+
+		d := NewDomain(domain)
+
+		exist, err := d.Exists()
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		fmt.Println(marks[exist])
+		time.Sleep(1 * time.Second)
 	}
 
 	app.Run(os.Args)
-
-	d := NewDomain("www.apple.com")
-
-	exist, err := d.Exists()
-
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	fmt.Println(marks[exist])
-	time.Sleep(1 * time.Second)
 }

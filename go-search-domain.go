@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var marks = map[bool]string{true: "Domain exists", false: "Domain is available"}
+var result = map[bool]string{true: "Domain exists", false: "Domain is available"}
 
 func main() {
 
@@ -15,8 +15,6 @@ func main() {
 		fmt.Fprintln(os.Stderr, "usage: go-search-domain www.golang.com")
 		os.Exit(1)
 	}
-
-	fmt.Println(os.Args[1])
 
 	d := NewDomain(os.Args[1])
 
@@ -26,7 +24,6 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(marks[exist])
+	fmt.Println(result[exist])
 	time.Sleep(1 * time.Second)
-
 }

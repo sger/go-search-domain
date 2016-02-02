@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"net"
 	"strings"
 )
@@ -17,20 +16,21 @@ func NewDomain(name string) *Domain {
 	}
 }
 
-func (s *Domain) Exists() (bool, error) {
+func (s *Domain) Exists() (string, bool, error) {
 	const whoisServer string = "com.whois-servers.net"
 	conn, err := net.Dial("tcp", whoisServer+":43")
 	if err != nil {
-		return false, err
+		return "error", false, err
 	}
 	defer conn.Close()
 	conn.Write([]byte(s.Name + "\r\n"))
 	scanner := bufio.NewScanner(conn)
+	var str = ""
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		str += scanner.Text()
 		if strings.Contains(strings.ToLower(scanner.Text()), "no match") {
-			return false, nil
+			return scanner.Text(), false, nil
 		}
 	}
-	return true, nil
+	return str, true, nil
 }

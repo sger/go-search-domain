@@ -19,6 +19,6 @@ func main() {
 	}
 
 	fmt.Println(exist)
-	fmt.Println(marks[!exist])
+	fmt.Println(marks[exist])
 	time.Sleep(1 * time.Second)
 }

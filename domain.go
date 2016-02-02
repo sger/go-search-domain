@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"net"
 	"strings"
 )
@@ -27,7 +26,7 @@ func (s *Domain) Exists() (bool, error) {
 	conn.Write([]byte(s.Name + "\r\n"))
 	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		//fmt.Println(scanner.Text())
 		if strings.Contains(strings.ToLower(scanner.Text()), "no match") {
 			return false, nil
 		}

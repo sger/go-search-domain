@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"os"
 	"strings"
 	"time"
 )
@@ -13,7 +12,19 @@ import (
 var marks = map[bool]string{true: "✓", false: "✗"}
 
 func main() {
-	s := bufio.NewScanner(os.Stdin)
+
+	d := NewDomain("www.apple.com")
+
+	exist, err := d.Exists()
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(exist)
+	time.Sleep(1 * time.Second)
+
+	/*s := bufio.NewScanner(os.Stdin)
 	for s.Scan() {
 		domain := s.Text()
 		fmt.Print(domain, " ")
@@ -24,7 +35,7 @@ func main() {
 		//fmt.Println(marks[!exist])
 		fmt.Println(exist)
 		time.Sleep(1 * time.Second)
-	}
+	}*/
 }
 
 func exists(domain string) (bool, error) {

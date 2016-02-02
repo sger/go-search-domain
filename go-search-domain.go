@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 )
 
@@ -10,7 +11,14 @@ var marks = map[bool]string{true: "Domain exists", false: "Domain is available"}
 
 func main() {
 
-	d := NewDomain("www.apple.com")
+	if len(os.Args) != 2 {
+		fmt.Fprintln(os.Stderr, "usage: go-search-domain www.golang.com")
+		os.Exit(1)
+	}
+
+	fmt.Println(os.Args[1])
+
+	d := NewDomain(os.Args[1])
 
 	exist, err := d.Exists()
 

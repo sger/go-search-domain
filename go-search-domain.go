@@ -6,8 +6,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/brettweavnet/gosync/version"
 	"github.com/codegangsta/cli"
+	"github.com/sger/go-search-domain/version"
 )
 
 var marks = map[bool]string{true: "Domain exists", false: "Domain is available"}
@@ -22,7 +22,7 @@ func main() {
 		cli.StringFlag{
 			Name:  "domain",
 			Value: "",
-			Usage: "",
+			Usage: "Search for a domain like www.apple.com",
 		},
 	}
 

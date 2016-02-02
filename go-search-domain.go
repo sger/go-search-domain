@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var marks = map[bool]string{true: "✓", false: "✗"}
+var marks = map[bool]string{true: "Domain exists", false: "Domain is available"}
 
 func main() {
 
@@ -18,11 +18,6 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	if exist {
-		fmt.Println("Domain exists")
-	} else {
-		fmt.Println("Domain is available")
-	}
 	fmt.Println(marks[exist])
 	time.Sleep(1 * time.Second)
 }

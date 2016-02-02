@@ -6,16 +6,19 @@ import (
 	"strings"
 )
 
+// Domain constructor
 type Domain struct {
 	Name string
 }
 
+// NewDomain constructor
 func NewDomain(name string) *Domain {
 	return &Domain{
 		Name: name,
 	}
 }
 
+// Exists check if a domain exists returns true or false
 func (s *Domain) Exists() (bool, error) {
 	const whoisServer string = "com.whois-servers.net"
 	conn, err := net.Dial("tcp", whoisServer+":43")

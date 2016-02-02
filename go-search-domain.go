@@ -27,9 +27,10 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) {
+		err := validateArgs(c)
+
 		domain := c.String("domain")
 		fmt.Println(domain)
-
 		d := NewDomain(domain)
 
 		exist, err := d.Exists()
@@ -43,4 +44,11 @@ func main() {
 	}
 
 	app.Run(os.Args)
+}
+
+func validateArgs(c *cli.Context) error {
+	if len(c.Args()) != 1 {
+		return fmt.Errorf("domain value is required")
+	}
+	return nil
 }

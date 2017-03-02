@@ -12,15 +12,15 @@ Via `go-get`.
 ```
 $ go get https://github.com/sger/go-search-domain
 $ go build
-$ ./go-search-domain www.apple.com
+$ ./go-search-domain apple
 ```
 
 Author
 -----
 
-__Spiros Gerokostas__ 
+__Spiros Gerokostas__
 
-- [![](https://img.shields.io/badge/twitter-sger-brightgreen.svg)](https://twitter.com/sger) 
+- [![](https://img.shields.io/badge/twitter-sger-brightgreen.svg)](https://twitter.com/sger)
 - :email: spiros.gerokostas@gmail.com
 
 License
